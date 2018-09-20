@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import List from './List';
+import Form from './Form';
 
 export default class App extends Component {
   constructor(props) {
@@ -17,20 +18,21 @@ export default class App extends Component {
 
   onClick = (event) => {
     event.preventDefault();
-    this.setState({
-      term: '',
-      items: [...this.state.items, this.state.term]
-    });
+
+      this.setState({
+        items: [...this.state.items, this.state.term],
+        //adds the term to the array that List items needs to print
+
+        term: ''
+        //makes the input value blank after the value has been stored in the List array
+      });
   }
 
   render() {
     return (
       <div className="App">
         <h1> To Do List</h1>
-        <form >
-          <input className="input" value={this.state.term} onChange={this.onChange} />
-          <button className="button" onClick={this.onClick}>Submit</button>
-        </form>
+        <Form onInputChange={this.onChange} onFormSubmit={this.onClick} term={this.state.term} />
         <List items={this.state.items} />
       </div>
     );
