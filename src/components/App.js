@@ -12,11 +12,11 @@ export default class App extends Component {
     };
   }
 
-  onChange = (event) => {
+  onInputChange = (event) => {
     this.setState({ term: event.target.value });
   }
 
-  onClick = (event) => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
       this.setState({
@@ -32,7 +32,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1> To Do List</h1>
-        <Form onInputChange={this.onChange} onFormSubmit={this.onClick} term={this.state.term} />
+        <Form onInputChange={this.onInputChange} onFormSubmit={this.onFormSubmit} term={this.state.term} />
         <List items={this.state.items} />
       </div>
     );
